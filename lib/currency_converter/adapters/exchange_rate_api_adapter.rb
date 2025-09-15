@@ -8,7 +8,7 @@ module CurrencyConverter
       def self.fetch_rates(currency)
         response = get("/latest/#{currency}")
 
-        ::CurrencyConverter::Models::ExchangeRateInfo.new(currency, response['rates'])
+        ::CurrencyConverter::Models::ExchangeRateInfo.new(currency:, rates: response['rates'])
       end
     end
   end

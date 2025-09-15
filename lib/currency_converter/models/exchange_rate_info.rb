@@ -3,7 +3,7 @@
 module CurrencyConverter
   module Models
     class ExchangeRateInfo
-      def initialize(currency, rates)
+      def initialize(currency:, rates:)
         @currency = currency
         @rates = rates
       end
