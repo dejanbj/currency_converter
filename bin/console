@@ -33,5 +33,7 @@ while running
     puts 'Invalid amount entered, please try again'
   rescue CurrencyConverter::InvalidCurrencyError
     puts 'Invalid currency entered, please try again'
+  rescue CurrencyConverter::FailedToFetchRatesError
+    puts 'Could not perform conversion, please try again later'
   end
 end

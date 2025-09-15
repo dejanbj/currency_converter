@@ -8,6 +8,8 @@ module CurrencyConverter
       def self.fetch_rates(currency)
         response = get("/latest/#{currency}")
 
+        raise FailedToFetchRatesError unless response['result'] == 'success'
+
         ::CurrencyConverter::Models::ExchangeRateInfo.new(currency:, rates: response['rates'])
       end
     end
