@@ -10,7 +10,7 @@ require 'currency_converter'
 running = true
 
 while running
-  puts 'Enter q to exit or any other letter to continue'
+  puts 'Enter q to exit or any other key to continue'
   initial_check = gets.chomp.strip
 
   if initial_check == 'q'
