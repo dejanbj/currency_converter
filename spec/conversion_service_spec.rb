@@ -49,5 +49,15 @@ RSpec.describe CurrencyConverter::ConversionService do
         expect { subject.call }.to raise_error(CurrencyConverter::InvalidAmountError)
       end
     end
+
+    context 'when there is a failure in the adapter' do
+      before do
+        allow(CurrencyConverter::Adapters::ExchangeRateApiAdapter).to receive(:fetch_rates).and_raise(CurrencyConverter::FailedToFetchRatesError)
+      end
+
+      it 'raises error' do
+        expect { subject.call }.to raise_error(CurrencyConverter::FailedToFetchRatesError)
+      end
+    end
   end
 end
