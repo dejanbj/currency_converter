@@ -1,36 +1,37 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "bundler/setup"
-require "currency_converter"
+require 'bundler/setup'
+require 'currency_converter'
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
-#require "irb"
-#IRB.start(__FILE__)
-
 running = true
 
 while running
-  puts "CURRENCY CONVERTER"
-
-  puts "Enter q to exit or any letter to continue"
+  puts 'Enter q to exit or any other letter to continue'
   initial_check = gets.chomp.strip
 
   if initial_check == 'q'
     return
   end
 
-  puts "Please enter from_currency:"
+  puts 'Please enter from_currency:'
   from_currency = gets.chomp.strip
 
-  puts "Please enter to_currency:"
+  puts 'Please enter to_currency:'
   to_currency = gets.chomp.strip
 
-  puts "Please enter amount:"
+  puts 'Please enter amount:'
   amount = gets.chomp.strip
 
-  conversion_result = CurrencyConverter::ConversionService.new(from_currency:, to_currency:, amount:).call
-  puts "CONVERSION RESULT: #{conversion_result}"
+  begin
+    conversion_result = CurrencyConverter::ConversionService.new(from_currency:, to_currency:, amount:).call
+    puts "CONVERSION RESULT: #{conversion_result}"
+  rescue CurrencyConverter::InvalidAmountError
+    puts 'Invalid amount entered, please try again'
+  rescue CurrencyConverter::InvalidCurrencyError
+    puts 'Invalid currency entered, please try again'
+  end
 end
