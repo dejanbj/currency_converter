@@ -5,7 +5,7 @@ module CurrencyConverter
     class BaseAdapter
       include HTTParty
 
-      def fetch_rates(currency)
+      def self.fetch_rates(currency)
         raise NotImplementedError, :abstract_method
       end
     end

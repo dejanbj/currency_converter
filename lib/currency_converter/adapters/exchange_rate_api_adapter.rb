@@ -5,11 +5,10 @@ module CurrencyConverter
     class ExchangeRateApiAdapter < BaseAdapter
       base_uri 'https://open.er-api.com/v6'
 
-      def fetch_rates(currency)
-        response = self.class.get("/latest/#{currency}")
+      def self.fetch_rates(currency)
+        response = get("/latest/#{currency}")
 
-        raise unless response['success']
-        ExchangeRateInfo.new(currency, response['rates'])
+        ::CurrencyConverter::Models::ExchangeRateInfo.new(currency, response['rates'])
       end
     end
   end
