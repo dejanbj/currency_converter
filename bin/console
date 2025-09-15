@@ -17,10 +17,10 @@ while running
     return
   end
 
-  puts 'Please enter from_currency:'
+  puts 'Please enter from_currency (uppercase ISO code):'
   from_currency = gets.chomp.strip
 
-  puts 'Please enter to_currency:'
+  puts 'Please enter to_currency (uppercase ISO code):'
   to_currency = gets.chomp.strip
 
   puts 'Please enter amount:'
