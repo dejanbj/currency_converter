@@ -29,11 +29,9 @@ module CurrencyConverter
     end
 
     def validate_amount!
-      begin
-        Float(@amount)
-      rescue
-        raise InvalidAmountError
-      end
+      Float(@amount)
+    rescue ArgumentError
+      raise InvalidAmountError
     end
 
     def supported_currencies
